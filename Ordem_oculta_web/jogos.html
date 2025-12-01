@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem Oculta – Jogos Terapêuticos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fafbfc 0%, #eff6ff 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .header {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand {
+      font-size: 24px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    
+    .btn-secondary {
+      background: #f4f6f9;
+      color: #374151;
+    }
+    
+    .btn-secondary:hover {
+      background: #e5e9f0;
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    
+    .game-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+      transition: all 0.3s;
+      border: 2px solid transparent;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+      border-color: #3b82f6;
+    }
+    
+    .game-header {
+      padding: 80px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .game-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.1;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        currentColor 10px,
+        currentColor 11px
+      );
+    }
+    
+    .game-icon {
+      font-size: 64px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .game-content {
+      padding: 24px;
+    }
+    
+    .game-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    
+    .game-description {
+      font-size: 14px;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    
+    .game-stats {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: #f9fafb;
+      border-radius: 8px;
+    }
+    
+    .stat {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #111827;
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .game-actions {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .btn-download {
+      flex: 1;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+    }
+    
+    .btn-download:hover {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+    
+    .btn-info {
+      background: #f4f6f9;
+      color: #374151;
+      padding: 12px 16px;
+    }
+    
+    .btn-info:hover {
+      background: #e5e9f0;
+    }
+    
+    .instructions {
+      background: white;
+      padding: 32px;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+    }
+    
+    .instructions h2 {
+      font-size: 24px;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+    
+    .instructions ol {
+      margin-left: 20px;
+    }
+    
+    .instructions li {
+      color: #4b5563;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    
+    .alert {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+    
+    .alert-title {
+      font-weight: 600;
+      color: #991b1b;
+      margin-bottom: 4px;
+    }
+    
+    .alert-text {
+      font-size: 14px;
+      color: #7f1d1d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">Ordem Oculta</div>
+      <a href="dashboard.html" class="btn btn-secondary">← Voltar ao Painel</a>
+    </div>
+    
+    <!-- Card Principal do Jogo -->
+    <div style="max-width: 800px; margin: 0 auto 32px;">
+      <div class="game-card" style="background: linear-gradient(135deg, #ffffff, #f0f9ff);">
+        <div class="game-header" style="background: linear-gradient(135deg, #3b82f6, #2563eb); padding: 60px 24px;">
+          <div class="game-icon" style="font-size: 80px; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));">🎮</div>
+        </div>
+        <div class="game-content" style="padding: 32px;">
+          <h3 class="game-title" style="font-size: 28px; text-align: center; margin-bottom: 12px;">
+            Ordem Oculta - Jogos Terapêuticos
+          </h3>
+          <p class="game-description" style="text-align: center; font-size: 16px; margin-bottom: 24px;">
+            Plataforma completa com 3 jogos cognitivos: Brick Break, Flexo e Jogo da Memória.<br>
+            Baixe uma única vez e tenha acesso a todos os jogos!
+          </p>
+          
+          <div class="game-stats" style="margin-bottom: 24px;">
+            <div class="stat">
+              <div class="stat-value">3</div>
+              <div class="stat-label">Jogos</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">45min</div>
+              <div class="stat-label">Total</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">★★★</div>
+              <div class="stat-label">Média</div>
+            </div>
+          </div>
+          
+          <div style="text-align: center;">
+            <button class="btn btn-download" onclick="downloadGame()" 
+                    style="padding: 16px 48px; font-size: 16px; display: inline-flex;">
+              <span style="font-size: 20px;">⬇️</span>
+              <span>Baixar Ordem Oculta.exe</span>
+            </button>
+            <p style="font-size: 12px; color: #6b7280; margin-top: 12px;">
+              Versão 1.0 • Windows 7+ • ~25MB
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Miniaturas dos Jogos Inclusos -->
+    <div style="margin-bottom: 32px;">
+      <h3 style="text-align: center; color: #111827; margin-bottom: 20px; font-size: 20px;">
+        🎯 Jogos Inclusos na Plataforma
+      </h3>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-header" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 40px 24px;">
+            <div class="game-icon" style="font-size: 48px;">🧱</div>
+          </div>
+          <div class="game-content">
+            <h3 class="game-title">Brick Break</h3>
+            <p class="game-description">
+              Quebra-blocos que estimula coordenação motora e reflexos.
+            </p>
+          </div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-header" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 40px 24px;">
+            <div class="game-icon" style="font-size: 48px;">🧩</div>
+          </div>
+          <div class="game-content">
+            <h3 class="game-title">Flexo</h3>
+            <p class="game-description">
+              Desafio de raciocínio espacial e flexibilidade cognitiva.
+            </p>
+          </div>
+        </div>
+        
+        <div class="game-card">
+          <div class="game-header" style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 40px 24px;">
+            <div class="game-icon" style="font-size: 48px;">🃏</div>
+          </div>
+          <div class="game-content">
+            <h3 class="game-title">Jogo da Memória</h3>
+            <p class="game-description">
+              Exercício clássico de memória visual e concentração.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="instructions">
+      <h2>📋 Como Utilizar os Jogos</h2>
+      <ol>
+        <li><strong>Baixe o jogo</strong> clicando no botão "Baixar Jogo" do jogo desejado</li>
+        <li><strong>Localize o arquivo</strong> na pasta de Downloads do seu computador</li>
+        <li><strong>Execute o arquivo</strong> .exe com duplo clique</li>
+        <li><strong>O Windows pode mostrar um aviso</strong> - clique em "Mais informações" e depois "Executar assim mesmo"</li>
+        <li><strong>Jogue normalmente</strong> - os dados serão salvos automaticamente no sistema</li>
+        <li><strong>Visualize o progresso</strong> na ficha do paciente no painel</li>
+      </ol>
+      
+      <div class="alert">
+        <div class="alert-title">⚠️ Requisitos do Sistema</div>
+        <div class="alert-text">
+          • Windows 7 ou superior<br>
+          • Conexão com internet (para enviar dados)<br>
+          • Permissão de administrador pode ser necessária
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function downloadGame(gameName) {
+      // Substitua estas URLs pelos links reais dos seus arquivos
+      const gameUrls = {
+        'brick': 'downloads/Brick_Break.exe',
+        'flexo': 'downloads/Flexo.exe',
+        'memoria': 'downloads/Jogo_Memoria.exe'
+      };
+      
+      const url = 'Ordem_Oculta.exe';
+      
+      if (!url) {
+        alert('Jogo não disponível no momento');
+        return;
+      }
+      
+      // Cria link temporário para download
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = url.split('/').pop();
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Feedback visual
+      const btn = event.target.closest('.btn-download');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span>✓</span><span>Download iniciado!</span>';
+      btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+      }, 2000);
+    }
+    
+    function showInfo(gameName) {
+      const infos = {
+        'brick': 'Brick Break ajuda no desenvolvimento de:\n• Coordenação olho-mão\n• Reflexos rápidos\n• Concentração\n• Planejamento estratégico',
+        'flexo': 'Flexo desenvolve:\n• Raciocínio espacial\n• Resolução de problemas\n• Flexibilidade cognitiva\n• Pensamento lógico',
+        'memoria': 'Jogo da Memória estimula:\n• Memória de curto prazo\n• Atenção visual\n• Concentração\n• Reconhecimento de padrões'
+      };
+      
+      alert(infos[gameName] || 'Informações não disponíveis');
+    }
+  </script>
+</body>
+</html>

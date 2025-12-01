@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem Oculta – Ficha do Paciente</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/patient-profile.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Ordem Oculta</div>
+    <div class="header-actions">
+      <a class="btn secondary" href="dashboard.html" role="button">Voltar</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Dados do Paciente -->
+    <section class="patient-header">
+      <div class="patient-info-card">
+        <div class="patient-avatar">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="patient-details">
+          <h1 class="patient-name" id="patientName">Carregando...</h1>
+          <div class="patient-meta">
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <span id="patientAge">-</span> anos
+            </span>
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span id="patientGender">-</span>
+            </span>
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              CPF: <span id="patientCPF">-</span>
+            </span>
+            <span class="meta-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              Cadastro: <span id="patientDate">-</span>
+            </span>
+          </div>
+        </div>
+        <div class="patient-actions">
+          <button id="btnEditarPaciente" class="btn secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+            Editar
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo Estatístico -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Brick Break</div>
+          <div class="stat-value" id="brickCount">-</div>
+          <div class="stat-sublabel">partidas jogadas</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+            <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+            <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Flexo</div>
+          <div class="stat-value" id="flexoCount">-</div>
+          <div class="stat-sublabel">partidas jogadas</div>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+        </div>
+        <div class="stat-content">
+          <div class="stat-label">Jogo da Memória</div>
+          <div class="stat-value" id="memoriaCount">-</div>
+          <div class="stat-sublabel">partidas jogadas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs dos Jogos -->
+    <section class="tabs-section">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="brick">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Brick Break
+        </button>
+        <button class="tab-btn" data-tab="flexo">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+          Flexo
+        </button>
+        <button class="tab-btn" data-tab="memoria">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          Jogo da Memória
+        </button>
+      </div>
+
+      <!-- Brick Break Tab -->
+      <div class="tab-content active" id="tab-brick">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Histórico - Brick Break</h3>
+            <button class="btn secondary btn-sm" onclick="window.APP.exportGameCSV('brick')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Exportar CSV
+            </button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Tempo (s)</th>
+                <th>Pontuação</th>
+                <th>Vidas Perdidas</th>
+              </tr>
+            </thead>
+            <tbody id="brickTable">
+              <tr><td colspan="4" class="muted">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Flexo Tab -->
+      <div class="tab-content" id="tab-flexo">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Histórico - Flexo</h3>
+            <button class="btn secondary btn-sm" onclick="window.APP.exportGameCSV('flexo')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Exportar CSV
+            </button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Tempo (s)</th>
+              </tr>
+            </thead>
+            <tbody id="flexoTable">
+              <tr><td colspan="2" class="muted">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Memória Tab -->
+      <div class="tab-content" id="tab-memoria">
+        <div class="table-card">
+          <div class="table-header">
+            <h3>Histórico - Jogo da Memória</h3>
+            <button class="btn secondary btn-sm" onclick="window.APP.exportGameCSV('memoria')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Exportar CSV
+            </button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Pontuação</th>
+                <th>Tempo (s)</th>
+                <th>Cartas Erradas</th>
+              </tr>
+            </thead>
+            <tbody id="memoriaTable">
+              <tr><td colspan="4" class="muted">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

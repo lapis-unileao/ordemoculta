@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem Oculta – Painel do Psicólogo</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Ordem Oculta</div>
+    <div class="header-actions">
+      <div class="small muted" id="greeting">Dr(a).</div>
+      <button id="btnNovoPaciente" class="btn primary">Novo Paciente</button>
+      <button id="btnRefresh" class="btn secondary">Atualizar</button>
+      <button id="btnLogout" class="btn ghost">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <div class="left">
+        <input id="search" class="input search" type="search" placeholder="Buscar por nome ou CPF – pressione Enter" aria-label="Buscar pacientes" />
+        <select id="filter" class="input" aria-label="Filtrar por gênero">
+          <option value="">Todos gêneros</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+      </div>
+
+      <div class="right">
+        <label class="small muted">Resultados / página</label>
+        <select id="pageSize" class="input">
+          <option>10</option><option>25</option><option>50</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="table-card">
+      <table class="table" aria-label="Pacientes">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Gênero</th>
+            <th>Idade</th>
+            <th>Data cadastro</th>
+            <th style="width: 60px; text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tblBody">
+          <tr><td colspan="6" class="muted">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <nav id="pagination" class="pagination" aria-label="Paginação"></nav>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
+
+<button id="btnJogos" class="btn secondary">🎮 Jogos</button>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ordem Oculta — Login</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Ordem Oculta</div>
+  </header>
+
+  <main class="page-center">
+    <section class="card" aria-labelledby="login-title">
+      <h1 id="login-title" class="title">Área do Psicólogo</h1>
+
+      <form id="loginForm" novalidate>
+        <label for="email" class="label">E-mail</label>
+        <input id="email" name="email" class="input" type="email" autocomplete="email" required aria-required="true" />
+
+        <label for="senha" class="label">Senha</label>
+        <input id="senha" name="senha" class="input" type="password" autocomplete="current-password" required aria-required="true" />
+
+        <div class="row">
+          <button id="btnLogin" class="btn primary" type="submit">Entrar</button>
+        </div>
+
+        <p id="loginMsg" class="msg" role="status" aria-live="polite"></p>
+
+        <p class="meta">Ainda não é registrado? <a href="cadastro.html">Cadastrar psicólogo</a></p>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

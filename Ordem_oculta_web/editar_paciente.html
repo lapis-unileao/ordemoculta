@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem Oculta – Editar Paciente</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Ordem Oculta</div>
+    <div class="header-actions">
+      <a class="btn secondary" href="dashboard.html" role="button">Voltar</a>
+    </div>
+  </header>
+
+  <main class="page-center">
+    <section class="card">
+      <h1 class="title">Editar Paciente</h1>
+
+      <form id="editarForm" novalidate>
+        <input type="hidden" id="paciente_id" />
+        
+        <label for="e_nome" class="label">Nome completo</label>
+        <input id="e_nome" class="input" type="text" required />
+
+        <label for="e_cpf" class="label">CPF</label>
+        <input id="e_cpf" class="input" type="text" inputmode="numeric" placeholder="00000000000" maxlength="14" required readonly />
+        
+        <small class="muted" style="display: block; margin-top: -8px; margin-bottom: 12px;">O CPF não pode ser alterado</small>
+
+        <label for="e_genero" class="label">Gênero</label>
+        <select id="e_genero" class="input" required>
+          <option value="">Selecione...</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+
+        <label for="e_idade" class="label">Idade</label>
+        <input id="e_idade" class="input" type="number" min="0" max="120" required />
+
+        <div class="row">
+          <button id="btnSalvar" class="btn primary" type="submit">Salvar alterações</button>
+          <button id="btnCancelar" class="btn secondary" type="button">Cancelar</button>
+          <button id="btnExcluir" class="btn" type="button" style="background: var(--error); color: white; margin-left: auto;">Excluir paciente</button>
+        </div>
+
+        <p id="editMsg" class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Modal de Confirmação de Exclusão -->
+  <div id="deleteModal" class="modal" hidden>
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <h2 class="modal-title">Confirmar Exclusão</h2>
+      <p class="modal-text">Tem certeza que deseja excluir este paciente? Esta ação não pode ser desfeita.</p>
+      <p class="modal-patient-info" id="deletePatientInfo"></p>
+      <div class="modal-actions">
+        <button id="btnConfirmarExclusao" class="btn" style="background: var(--error); color: white;">Sim, excluir</button>
+        <button id="btnCancelarExclusao" class="btn secondary">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

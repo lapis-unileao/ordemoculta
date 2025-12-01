@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ordem Oculta — Cadastro de Paciente</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Ordem Oculta</div>
+    <div class="header-actions">
+      <a class="btn secondary" href="dashboard.html" role="button">Voltar</a>
+    </div>
+  </header>
+
+  <main class="page-center">
+    <section class="card">
+      <h1 class="title">Cadastro de Paciente</h1>
+
+      <form id="pacienteForm" novalidate>
+        <label for="p_nome" class="label">Nome completo</label>
+        <input id="p_nome" class="input" type="text" required />
+
+        <label for="p_cpf" class="label">CPF</label>
+        <input id="p_cpf" class="input" type="text" inputmode="numeric" placeholder="00000000000" maxlength="14" required />
+
+        <label for="p_genero" class="label">Gênero</label>
+        <select id="p_genero" class="input" required>
+          <option value="">Selecione...</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+
+        <label for="p_idade" class="label">Idade</label>
+        <input id="p_idade" class="input" type="number" min="0" max="120" required />
+
+        <div class="row">
+          <button id="btnSalvarPaciente" class="btn primary" type="submit">Salvar paciente</button>
+          <button id="btnCancelar" class="btn secondary" type="button">Cancelar</button>
+        </div>
+
+        <p id="pacMsg" class="msg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

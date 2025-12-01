@@ -1,0 +1,16 @@
+/* login.css – Estilos específicos para páginas de Login e Cadastro */
+
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 80px);
+  padding: var(--space-xl);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-center {
+    padding: var(--space-md);
+  }
+}
